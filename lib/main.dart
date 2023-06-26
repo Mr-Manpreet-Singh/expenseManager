@@ -20,6 +20,7 @@ class ExpenseTracker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return (MaterialApp(
+      // debugShowCheckedModeBanner: false,
       home: MyHome(),
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
@@ -28,7 +29,7 @@ class ExpenseTracker extends StatelessWidget {
         //           // color: Colors.white,
         //           ),
         //     ),
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
             displayMedium: TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 25, color: Colors.black),
             displaySmall: TextStyle(fontWeight: FontWeight.w600, fontSize: 15)),
@@ -47,7 +48,7 @@ class _MyHomeState extends State<MyHome> {
   final List<Transaction> _transaction = [];
   List<Transaction> get _recentTransaction {
     return _transaction.where((tx) {
-      return tx.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+      return tx.date.isAfter(DateTime.now().subtract(const Duration(days: 7)));
     }).toList();
   }
 
@@ -91,7 +92,7 @@ class _MyHomeState extends State<MyHome> {
       actions: [
         IconButton(
           onPressed: () => _startNewInput(context),
-          icon: Icon(
+          icon: const Icon(
             Icons.add_circle_outlined,
             size: 41,
           ),
@@ -119,7 +120,7 @@ class _MyHomeState extends State<MyHome> {
         // 0.28 0.6355
         if (_isLandscape)
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('Show Chart'),
+            const Text('Show Chart'),
             Switch(
               value: _showChart,
               onChanged: (bool newVal) {
@@ -147,7 +148,7 @@ class _MyHomeState extends State<MyHome> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () => _startNewInput(context),
-        child: Icon(
+        child: const Icon(
           Icons.add_circle,
           size: 35,
         ),
@@ -155,40 +156,3 @@ class _MyHomeState extends State<MyHome> {
     );
   }
 }
-
-// Transaction(
-//   id: 'a',
-//   title: 'xyz',
-//   amount: 100.99,
-//   date: DateTime.now(),
-// ),
-// Transaction(
-//   id: 'b',
-//   title: 'xyz',
-//   amount: 101.99,
-//   date: DateTime.now(),
-// ),
-// Transaction(
-//   id: 'c',
-//   title: 'xyz',
-//   amount: 102.99,
-//   date: DateTime.now(),
-// ),
-// Transaction(
-//   id: 'd',
-//   title: 'Singh',
-//   amount: 1000000.99,
-//   date: DateTime.now(),
-// ),
-// Transaction(
-//   id: 'e',
-//   title: 'King',
-//   amount: 101.9954864,
-//   date: DateTime.now(),
-// ),
-// Transaction(
-//   id: 'f',
-//   title: 'Manu',
-//   amount: 164545.954549,
-//   date: DateTime.now(),
-// ),
