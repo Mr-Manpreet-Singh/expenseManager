@@ -37,10 +37,11 @@ class _NewInputState extends State<NewInput> {
         .then((pickedDate) {
       if (pickedDate == null)
         return;
-      else
+      else {
         setState(() {
           _selectedDate = pickedDate;
         });
+      }
     });
   }
 
@@ -59,7 +60,7 @@ class _NewInputState extends State<NewInput> {
             children: [
               TextField(
                 // Amount text field
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Amount',
                   // errorText: "Invalid",
                   icon: Icon(
@@ -73,7 +74,7 @@ class _NewInputState extends State<NewInput> {
               ),
               TextField(
                 // Title text field
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Title',
                   icon: Icon(
                     Icons.post_add_rounded,
@@ -84,7 +85,7 @@ class _NewInputState extends State<NewInput> {
                 onSubmitted: (_) => _submitData(),
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 height: 90,
                 child: Row(
                   children: [
@@ -95,17 +96,17 @@ class _NewInputState extends State<NewInput> {
                     // ElevatedButton(onPressed: startDate, child: Text("Choose Date")),
                     ElevatedButton(
                         onPressed: _presentDatePicker,
-                        child: Text("Choose Date")),
+                        child: const Text("Choose Date")),
                   ],
                 ),
               ),
               Container(
                 alignment: Alignment.centerRight,
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: ElevatedButton(
                   // style: ButtonStyle,
                   onPressed: _submitData,
-                  child: Text("Add to List"),
+                  child: const Text("Add to List"),
                 ),
               ),
             ],

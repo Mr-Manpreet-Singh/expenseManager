@@ -2,11 +2,10 @@
 import 'package:flutter/material.dart';
 // class Model
 import '../models/Transaction.dart';
-// importing other widgets
 import 'package:expense_tracker/widgets/chart.dart';
 import 'package:expense_tracker/widgets/new_input.dart';
 import 'package:expense_tracker/widgets/print_transaction.dart';
-import 'package:flutter/services.dart';
+
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -39,6 +38,8 @@ class ExpenseTracker extends StatelessWidget {
 }
 
 class MyHome extends StatefulWidget {
+  const MyHome({super.key});
+
   @override
   State<MyHome> createState() => _MyHomeState();
 }
@@ -87,8 +88,8 @@ class _MyHomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final _isLandscape = mediaQuery.orientation == Orientation.landscape;
-    final AppbarVariable = AppBar(
+    final isLandscape = mediaQuery.orientation == Orientation.landscape;
+    final appBarVariable = AppBar(
       actions: [
         IconButton(
           onPressed: () => _startNewInput(context),
@@ -102,23 +103,23 @@ class _MyHomeState extends State<MyHome> {
     );
 
     return Scaffold(
-      appBar: AppbarVariable,
+      appBar: appBarVariable,
       body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-        if (!_isLandscape)
+        if (!isLandscape)
           Container(
               height: (mediaQuery.size.height -
-                      AppbarVariable.preferredSize.height -
+                      appBarVariable.preferredSize.height -
                       mediaQuery.padding.top) *
                   0.28,
               child: Chart(_recentTransaction)),
-        if (!_isLandscape)
-          Container(
+        if (!isLandscape)
+          SizedBox(
               height: mediaQuery.size.height * 0.6355,
               // height: (mediaQuery.size.height -
               //         mediaQuery.padding.bottom) *0.72,
               child: PrintTransaction(_transaction, _removeItem)),
         // 0.28 0.6355
-        if (_isLandscape)
+        if (isLandscape)
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             const Text('Show Chart'),
             Switch(
@@ -130,11 +131,11 @@ class _MyHomeState extends State<MyHome> {
               },
             ),
           ]),
-        if (_isLandscape)
+        if (isLandscape)
           (_showChart)
               ? Container(
                   height: (mediaQuery.size.height -
-                          AppbarVariable.preferredSize.height -
+                          appBarVariable.preferredSize.height -
                           mediaQuery.padding.top) *
                       0.7,
                   child: Chart(_recentTransaction))

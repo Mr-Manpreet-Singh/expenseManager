@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class BarChat extends StatelessWidget {
   // const BarChat({super.key});
@@ -12,24 +11,24 @@ class BarChat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (ctx, Constraints) {
+    return LayoutBuilder(builder: (ctx, constraint) {
       return Column(
         children: [
           Container(
-              height: Constraints.maxHeight * 0.15,
+              height: constraint.maxHeight * 0.15,
               child: FittedBox(child: Text('\$${amount.toStringAsFixed(0)}'))),
           SizedBox(
-            height: Constraints.maxHeight * 0.05,
+            height: constraint.maxHeight * 0.05,
           ),
           Container(
-              height: Constraints.maxHeight * 0.60,
+              height: constraint.maxHeight * 0.60,
               width: 10,
               child: Stack(children: [
                 Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(color: Colors.grey, width: 1),
-                      color: Color.fromRGBO(220, 220, 220, 1)),
+                      color:const Color.fromRGBO(220, 220, 220, 1)),
                 ),
                 FractionallySizedBox(
                   heightFactor: totalSpendRatio,
@@ -42,10 +41,10 @@ class BarChat extends StatelessWidget {
                 )
               ])),
           SizedBox(
-            height: Constraints.maxHeight * 0.05,
+            height: constraint.maxHeight * 0.05,
           ),
           Container(
-              height: Constraints.maxHeight * 0.15, child: Text('$lable')),
+              height: constraint.maxHeight * 0.15, child: Text('$lable')),
         ],
       );
     });

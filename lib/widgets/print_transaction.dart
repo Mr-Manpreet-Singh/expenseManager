@@ -24,8 +24,8 @@ class PrintTransaction extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: FittedBox(
                     child: Text(
-                      '${transaction[index].amount.toStringAsFixed(1)}',
-                      style: TextStyle(fontWeight: FontWeight.w600),
+                      transaction[index].amount.toStringAsFixed(1),
+                      style: const TextStyle(fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
